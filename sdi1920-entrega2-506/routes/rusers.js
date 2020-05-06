@@ -114,7 +114,7 @@ module.exports = function (app, swig, gestorBD) {
 
 
     /*
-    * Route that list all friends of the user in session.
+    *Amigos en sesion
     *
     */
     app.get("/friends", function (req, res) {
