@@ -1,0 +1,77 @@
+{% extends "template.html" %}
+{% block title %} Listado de usuarios {%endblock%}
+{% block main %}
+<!-- Búsqueda -->
+<div class="row">
+    <div id="custom-search-input ">
+        <form action="/user/list" method="get">
+            <div
+                    class="input-group col-xs-8 col-sm-6 col-md-4 col-lg-5 pull-right">
+                <input class="search-query form-control" name="busqueda"
+                       placeholder="Nombre del usuario o email" type="text"/> <span
+                    class="input-group-btn">
+					<button class="btn" type="submit">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h2>Usuarios</h2>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>E-mail</th>
+            <th class="col-md-1"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for usuarioLista in usuarios %}
+        <tr>
+            <td>{{ usuarioLista.nombre }}</td>
+            <td>{{ usuarioLista.email }}</td>
+            <td><a href="/friendrequest/{{ usuarioLista._id.toString() }}" type="button">Request</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <!-- Fin del Bloque usuario -->
+</div>
+
+<!-- Paginación mostrar la actual y 2 anteriores y dos siguientes -->
+<div class="row text-center">
+    <ul class="pagination">
+        <!-- Primera -->
+        <li class="page-item">
+            <a class="page-link" href="/user/list?pg=1&&busqueda={{ busqueda }}">Primera</a>
+        </li>
+
+        <!-- Anterior (si la hay ) -->
+        {% if pgActual-1 >= 1 %}
+        <li class="page-item">
+            <a class="page-link" href="/user/list?pg={{ pgActual -1 }}&&busqueda={{ busqueda }}">{{ pgActual -1 }}</a>
+        </li>
+        {% endif %}
+
+        <!-- Actual -->
+        <li class="page-item active">
+            <a class="page-link" href="/user/list?pg={{ pgActual }}&&busqueda={{ busqueda }}">{{ pgActual }}</a>
+        </li>
+
+        <!-- Siguiente (si la hay) -->
+        {% if pgActual+1 <= pgUltima %}
+        <li class="page-item">
+            <a class="page-link" href="/user/list?pg={{ pgActual+1 }}&&busqueda={{ busqueda }}">{{ pgActual+1 }}</a>
+        </li>
+        {% endif %}
+
+        <!-- Última -->
+        <li class="page-item">
+            <a class="page-link" href="/user/list?pg={{ pgUltima }}&&busqueda={{ busqueda }}">Última</a></li>
+    </ul>
+</div>
+{% endblock %}
