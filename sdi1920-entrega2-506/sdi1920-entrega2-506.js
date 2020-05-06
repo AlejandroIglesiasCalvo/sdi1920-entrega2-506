@@ -3,9 +3,9 @@ let express = require('express');
 let app = express();
 
 let rest = require('request');
-app.set('rest',rest);
+app.set('rest', rest);
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", "true");
     res.header("Access-Control-Allow-Methods", "POST, GET, DELETE, UPDATE, PUT");
@@ -15,8 +15,8 @@ app.use(function(req, res, next) {
 });
 log4js = require('log4js');
 log4js.configure({
-    appenders: { sdi2: { type: 'file', filename: 'log/social-network.log' } },
-    categories: { default: { appenders: ['sdi2'], level: 'trace' } }
+    appenders: {sdi2: {type: 'file', filename: 'log/social-network.log'}},
+    categories: {default: {appenders: ['sdi2'], level: 'trace'}}
 });
 var logger = log4js.getLogger('sdi2');
 
@@ -54,7 +54,7 @@ routerUsuarioToken.use(function (req, res, next) {
                     error: 'Token invalido o caducado'
                 });
                 // También podríamos comprobar que intoToken.usuario existe
-                return;
+
 
             } else {
                 // dejamos correr la petición
@@ -81,29 +81,30 @@ app.use('/cliente.html?w=chat', routerUsuarioToken);
 
 // routerUsuarioSession
 var routerUsuarioSession = express.Router();
-routerUsuarioSession.use(function(req, res, next) {
+routerUsuarioSession.use(function (req, res, next) {
     console.log("routerUsuarioSession");
-    if ( req.session.usuario ) {
+    if (req.session.usuario) {
         // dejamos correr la petición
         next();
     } else {
-        console.log("va a : "+req.session.destino)
+        console.log("va a : " + req.session.destino);
         res.redirect("/signin?mensaje=Intento de acceso a una zona privada sin autorizacion"
             + "&tipoMensaje=alert-danger");
     }
 });
 // Aplicar routerUsuarioSession
-app.use("/user/list",routerUsuarioSession);
-app.use("/friends",routerUsuarioSession);
-app.use("/requests",routerUsuarioSession);
-app.use("/requests/accept/:id",routerUsuarioSession);
-app.use("/friendrequest/:id",routerUsuarioSession);
+app.use("/user/list", routerUsuarioSession);
+app.use("/friends", routerUsuarioSession);
+app.use("/requests", routerUsuarioSession);
+app.use("/requests/accept/:id", routerUsuarioSession);
+app.use("/friendrequest/:id", routerUsuarioSession);
 
 app.use(express.static('public'));
 
 //Variables
+// Variables
 app.set('port', 8081);
-app.set('db', 'mongodb://admin:sdi@ds245228.mlab.com:45228/tiendamusica');
+app.set('db', 'mongodb://admin:admin@tiendamusica-shard-00-00-en3ox.mongodb.net:27017,tiendamusica-shard-00-01-en3ox.mongodb.net:27017,tiendamusica-shard-00-02-en3ox.mongodb.net:27017/test?ssl=true&replicaSet=tiendamusica-shard-0&authSource=admin&retryWrites=true&w=majority');
 app.set('clave', 'abcdefg');
 app.set('crypto', crypto);
 app.set('logger', logger);
@@ -122,7 +123,7 @@ routerUserSession.use(function (req, res, next) {
         // dejamos correr la petición
         next();
     } else {
-        console.log("va a : " + req.session.destino)
+        console.log("va a : " + req.session.destino);
         res.redirect("/signin");
     }
 });
