@@ -1,1 +1,10 @@
 [2020-05-07T15:33:22.656] [WARN] sdi2 - Ya existe un usuario con email prueba1@prueba1.com
+[2020-05-07T15:34:21.105] [INFO] sdi2 - Usuario identificado prueba1@prueba1.com
+[2020-05-07T15:40:38.061] [INFO] sdi2 - Usuario identificado prueba1@prueba1.com
+[2020-05-07T15:40:43.985] [INFO] sdi2 - Listando peticiones de amistad corréctamente para prueba1@prueba1.com
+[2020-05-07T15:40:59.427] [INFO] sdi2 - Usuario prueba1@prueba1.com ha enviado una petición de amistad
+[2020-05-07T15:41:03.206] [INFO] sdi2 - Usuario null ha cerrado sesión.
+[2020-05-07T15:41:33.509] [INFO] sdi2 - Usuario identificado prueba2@prueba2.com
+[2020-05-07T15:41:45.863] [INFO] sdi2 - Listando peticiones de amistad corréctamente para prueba2@prueba2.com
+[2020-05-07T15:41:50.661] [INFO] sdi2 - Amistad aceptada por el usuario prueba2@prueba2.com
+[2020-05-07T15:42:11.135] [INFO] sdi2 - Usuario null ha cerrado sesión.
