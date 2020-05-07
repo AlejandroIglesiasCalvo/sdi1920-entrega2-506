@@ -1,0 +1,95 @@
+<div id="widget-friends">
+	<h2>Amigos</h2>
+	<input type="text" class="form-control"
+		placeholder="Filtrar por nombre" id="filtro-nombre" name="busqueda" />
+	<table class="table table-hover" id="tabla-amigos">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>E-mail</th>
+				<th>Mensajes sin leer</th>
+			</tr>
+		</thead>
+		<tbody id="tablaCuerpo">
+
+		</tbody>
+	</table>
+</div>
+<script>
+	window.history.pushState("", "", "/cliente.html?w=friends");
+	var friends;
+	function cargarFriends() {
+		$.ajax({
+			url : URLbase + "/users",
+			type : "GET",
+			data : {},
+			dataType : 'json',
+			headers : {
+				"token" : token
+			},
+			success : function(respuesta) {
+				friends = respuesta;
+				actualizarTabla(friends);
+			},
+			error : function(error) {
+				$("#contenedor-principal").load("widget-login.html");
+			}
+		});
+	}
+
+	function actualizarTabla(friendsMostrar) {
+		$("#tablaCuerpo").empty(); // Vaciar la tabla
+		for (i = 0; i < friendsMostrar.length; i++) {
+            loadTable(friendsMostrar[i]);
+		}
+	}
+
+    function chat(_idFriend, email) {
+
+        idSelectedFriend = _idFriend;
+        emailSelectedFriend = email;
+
+        $("#contenedor-principal").load("widget-chat.html");
+    }
+
+    function loadTable(friend){
+        $.ajax({
+            url: URLbase + "/message/" + friend._id,
+            type: "GET",
+            data: {},
+            dataType: 'json',
+            headers: {"token": token},
+            success: function (res) {
+                numberNotReadMessages = res.number;
+                $("#tablaCuerpo").append(
+                    "<tr id="+ friend.nombre +">" + "<td>"
+                    + friend.nombre + "</td>" + "<td>"
+                    + friend.email + "</td>" + "<td>"
+                    + numberNotReadMessages + "</td>" + "<td>"
+                    + "<a class=\"btn btn-primary\" onclick=chat('" +  friend._id
+                    + "','" + friend.email + "') role=\"button\">"
+                    + "Chatear con " + friend.nombre
+                    + "</a>" + "</tr>");
+            },
+            error: function (error) {
+                $("#contenedor-principal").load("widget-login.html");
+            }
+        });
+    }
+
+
+    cargarFriends();
+
+	$('#filtro-nombre').on('input', function(e) {
+		var friendsFiltrados = [];
+		var nombreFiltro = $("#filtro-nombre").val();
+
+		for (i = 0; i < friends.length; i++) {
+			if (friends[i].nombre.indexOf(nombreFiltro) != -1) {
+                friendsFiltrados.push(friends[i]);
+			}
+		}
+		actualizarTabla(friendsFiltrados);
+	});
+
+</script>
