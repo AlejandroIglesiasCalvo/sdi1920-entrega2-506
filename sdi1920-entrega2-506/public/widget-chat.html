@@ -1,17 +1,17 @@
 <div id="widget-chat">
-<h2>Chat</h2>
-<div id="chat-container" style="overflow-y: scroll;"></div>
+    <h2>Chat</h2>
+    <div id="chat-container" style="overflow-y: scroll;"></div>
 
 </div>
 <div>
-    <input id="message" class="form-control"/>
-    <button id="send" type="button" class="btn btn-success" onclick="sendMessage()">Enviar</button>
+    <input class="form-control" id="message"/>
+    <button class="btn btn-success" id="send" onclick="sendMessage()" type="button">Enviar</button>
 </div>
 <script>
     window.history.pushState("", "", "/cliente.html?w=chat");
     loadMessages();
 
-    function loadMessages(){
+    function loadMessages() {
         $.ajax({
             url: URLbase + "/message/" + idSelectedFriend,
             type: "GET",
@@ -28,20 +28,20 @@
         });
     }
 
-    function updateChat(userMessages){
+    function updateChat(userMessages) {
         console.log("Entramos en updateChat");
         $("#chat-container").empty();
 
-        userMessages.forEach(function(userMessage, index){
+        userMessages.forEach(function (userMessage, index) {
             setMessageRead(userMessage._id.toString());
             var message = "";
-            if(userMessage.sender._id == idSelectedFriend){
+            if (userMessage.sender._id == idSelectedFriend) {
                 message += "<div class='message-container-left'>" +
                     "<p class='text-left'>" + userMessage.sender.nombre + "</p>" +
                     "<p class='text-left'>" + userMessage.text + "</p>"
                 ;
                 message += "</div>";
-            }else{
+            } else {
                 message += "<div class='message-container-right'>" +
                     "<p class='text-right'>" + userMessage.sender.nombre + "</p>" +
                     "<p class='text-right'>" + userMessage.text + "</p>"
@@ -57,7 +57,7 @@
 
     }
 
-    function sendMessage(){
+    function sendMessage() {
         $.ajax({
             url: URLbase + "/message",
             type: "POST",
