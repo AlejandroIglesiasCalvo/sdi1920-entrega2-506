@@ -16,7 +16,7 @@ import com.uniovi.tests.pageobjects.*;
 
 //Ordenamos las pruebas por el nombre del método
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) 
-public class NotaneitorTests {
+public class sdi1920entrega2test506 {
 	//En Windows (Debe ser la versión 65.0.1 y desactivar las actualizacioens automáticas)):
 	//static String PathFirefox65 = "C:\\Program Files\\Mozilla Firefox\\firefox.exe";
 	//static String Geckdriver024 = "C:\\Path\\geckodriver024win64.exe";
