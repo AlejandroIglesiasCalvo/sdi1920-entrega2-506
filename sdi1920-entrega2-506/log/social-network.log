@@ -8,3 +8,10 @@
 [2020-05-07T15:41:45.863] [INFO] sdi2 - Listando peticiones de amistad corréctamente para prueba2@prueba2.com
 [2020-05-07T15:41:50.661] [INFO] sdi2 - Amistad aceptada por el usuario prueba2@prueba2.com
 [2020-05-07T15:42:11.135] [INFO] sdi2 - Usuario null ha cerrado sesión.
+[2020-05-07T15:45:54.002] [INFO] sdi2 - Usuario identificado prueba2@prueba2.com
+[2020-05-07T15:46:26.918] [INFO] sdi2 - Usuario null ha cerrado sesión.
+[2020-05-07T15:46:36.028] [INFO] sdi2 - Usuario identificado prueba1@prueba1.com
+[2020-05-07T15:46:47.529] [INFO] sdi2 - Listando peticiones de amistad corréctamente para prueba1@prueba1.com
+[2020-05-07T15:46:59.886] [INFO] sdi2 - Usuario prueba1@prueba1.com ha enviado una petición de amistad
+[2020-05-07T15:47:14.943] [INFO] sdi2 - Listando peticiones de amistad corréctamente para prueba1@prueba1.com
+[2020-05-07T15:47:31.630] [INFO] sdi2 - Usuario null ha cerrado sesión.
