@@ -96,25 +96,31 @@ public class sdi1920entrega2test506 {
 //		PO_View.checkElement(driver, "text", "Amigos");
 //	}
 //	//Inicio de sesión con datos inválidos (usuario estándar, campo email y contraseña vacíos)
+//	@Test
+//	public void PR06() {
+//		driver.navigate().to("http://localhost:8081/cliente.html");
+//		PO_LoginView.fillForm(driver, "", "");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
+//	}
+//
+//	// Inicio de sesión con datos inválidos (usuario estándar, email existente, pero contraseña incorrecta).
+//	@Test
+//	public void PR07() {
+//		driver.navigate().to("http://localhost:8081/cliente.html");
+//		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "pedo");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
+//	}
+//
+//	// Inicio de sesión con datos inválidos (usuario estándar, email no existente y contraseña no vacía)
 	@Test
-	public void PR06() {
+	public void PR08() {
 		driver.navigate().to("http://localhost:8081/cliente.html");
-		PO_LoginView.fillForm(driver, "", "");
+		PO_LoginView.fillForm(driver, "pruebaFalsa@prueba99.com", "pedo");
 		SeleniumUtils.esperarSegundos(driver, 3);
 		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
 	}
-//
-//	// PR07. Sin hacer /
-//	@Test
-//	public void PR07() {
-//		assertTrue("PR07 sin hacer", false);
-//	}
-//
-//	// PR08. Sin hacer /
-//	@Test
-//	public void PR08() {
-//		assertTrue("PR08 sin hacer", false);
-//	}
 //
 //	// PR09. Sin hacer /
 //	@Test
