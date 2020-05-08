@@ -5,6 +5,8 @@ import java.util.List;
 //Paquetes JUnit 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
+
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 //Paquetes Selenium 
 import org.openqa.selenium.*;
@@ -114,25 +116,35 @@ public class sdi1920entrega2test506 {
 //	}
 //
 //	// Inicio de sesión con datos inválidos (usuario estándar, email no existente y contraseña no vacía)
-	@Test
-	public void PR08() {
-		driver.navigate().to("http://localhost:8081/cliente.html");
-		PO_LoginView.fillForm(driver, "pruebaFalsa@prueba99.com", "pedo");
-		SeleniumUtils.esperarSegundos(driver, 3);
-		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
-	}
+//	@Test
+//	public void PR08() {
+//		driver.navigate().to("http://localhost:8081/cliente.html");
+//		PO_LoginView.fillForm(driver, "pruebaFalsa@prueba99.com", "pedo");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
+//	}
 //
-//	// PR09. Sin hacer /
+//	// Hacer click en la opción de salir de sesión y comprobar que se redirige a la página de inicio de sesión (Login).
 //	@Test
 //	public void PR09() {
-//		assertTrue("PR09 sin hacer", false);
+//		driver.navigate().to("http://localhost:8081/cliente.html");
+//		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		PO_View.checkElement(driver, "text", "Amigos");
+//		driver.navigate().to("http://localhost:8081/logout");
+//		SeleniumUtils.textoPresentePagina(driver, "Bienvenido a la mejor red social del mundo");
 //	}
 //
-//	// PR10. Sin hacer /
-//	@Test
-//	public void PR10() {
-//		assertTrue("PR10 sin hacer", false);
-//	}
+//	// Comprobar que el botón cerrar sesión no está visible si el usuario no está autenticado.
+	@Test
+	public void PR10() {
+		driver.navigate().to("http://localhost:8081");
+		try {
+			List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogout')]");
+		} catch (NoSuchElementException nse) {
+			assertTrue("No esta el boton", true);
+		}
+	}
 //
 //	// PR11. Sin hacer /
 //	@Test
