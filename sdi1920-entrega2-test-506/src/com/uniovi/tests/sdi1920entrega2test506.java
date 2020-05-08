@@ -21,7 +21,7 @@ public class sdi1920entrega2test506 {
 	static String Geckdriver024 = "C:\\Users\\alejandro\\Downloads\\PL-SDI-Sesión5-material\\geckodriver024win64.exe";
 
 	static WebDriver driver = getDriver(PathFirefox65, Geckdriver024);
-	static String URL = "https://localhost:8081";
+	static String URL = "http://localhost:8081";
 
 	public static WebDriver getDriver(String PathFirefox, String Geckdriver) {
 		System.setProperty("webdriver.firefox.bin", PathFirefox);
