@@ -88,19 +88,21 @@ public class sdi1920entrega2test506 {
 //		SeleniumUtils.textoPresentePagina(driver, "Registrar usuario");
 //	}
 //	//Inicio de sesión con datos válidos (usuario estándar).
-	@Test
-	public void PR05() {
-		driver.navigate().to("http://localhost:8081/cliente.html");
-		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
-		SeleniumUtils.esperarSegundos(driver, 3);
-		PO_View.checkElement(driver, "text", "Amigos");
-	}
-//
-//	// PR06. Sin hacer /
 //	@Test
-//	public void PR06() {
-//		assertTrue("PR06 sin hacer", false);
+//	public void PR05() {
+//		driver.navigate().to("http://localhost:8081/cliente.html");
+//		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		PO_View.checkElement(driver, "text", "Amigos");
 //	}
+//	//Inicio de sesión con datos inválidos (usuario estándar, campo email y contraseña vacíos)
+	@Test
+	public void PR06() {
+		driver.navigate().to("http://localhost:8081/cliente.html");
+		PO_LoginView.fillForm(driver, "", "");
+		SeleniumUtils.esperarSegundos(driver, 3);
+		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
+	}
 //
 //	// PR07. Sin hacer /
 //	@Test
