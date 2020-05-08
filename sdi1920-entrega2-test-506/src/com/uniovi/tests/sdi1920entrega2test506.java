@@ -68,27 +68,33 @@ public class sdi1920entrega2test506 {
 //		PO_RegisterView.fillForm(driver, "", "", "", "");
 //		SeleniumUtils.textoPresentePagina(driver, "Registrar usuario");
 //	}
-	// Registro de Usuario con datos inválidos (repetición de contraseña inválida).
-	@Test
-	public void PR03() {
-		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonSignup')]");
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 2);	
-		PO_RegisterView.fillForm(driver, "PepitoGrillo", "prueba999@prueba99.com", "prueba99", "prueba98");
-		SeleniumUtils.textoPresentePagina(driver, "Registrar usuario");
-	}
+// Registro de Usuario con datos inválidos (repetición de contraseña inválida).
+//	@Test
+//	public void PR03() {
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonSignup')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);	
+//		PO_RegisterView.fillForm(driver, "PepitoGrillo", "prueba999@prueba99.com", "prueba99", "prueba98");
+//		SeleniumUtils.textoPresentePagina(driver, "Registrar usuario");
+//	}
 
-//	// PR04. Sin hacer /
+//	// Registro de Usuario con datos inválidos (email existente).
 //	@Test
 //	public void PR04() {
-//		assertTrue("PR04 sin hacer", false);
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonSignup')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		PO_RegisterView.fillForm(driver, "Alex", "prueba99@prueba99.com", "prueba99", "prueba99");
+//		SeleniumUtils.textoPresentePagina(driver, "Registrar usuario");
 //	}
-//
-//	// PR05. Sin hacer /
-//	@Test
-//	public void PR05() {
-//		assertTrue("PR05 sin hacer", false);
-//	}
+//	//Inicio de sesión con datos válidos (usuario estándar).
+	@Test
+	public void PR05() {
+		driver.navigate().to("http://localhost:8081/cliente.html");
+		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+		SeleniumUtils.esperarSegundos(driver, 3);
+		PO_View.checkElement(driver, "text", "Amigos");
+	}
 //
 //	// PR06. Sin hacer /
 //	@Test
