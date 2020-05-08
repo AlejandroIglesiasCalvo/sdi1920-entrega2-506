@@ -172,24 +172,31 @@ public class sdi1920entrega2test506 {
 //
 //	// Hacer una búsqueda escribiendo en el campo un texto que no exista y comprobar que se
 ////muestra la página que corresponde, con la lista de usuarios vacía.
-
+//	@Test
+//	public void PR13() {
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+//		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
+//		PO_ListUsers.fillSearchText(driver, "pedo");
+//		elementos = PO_View.checkElement(driver, "text", "Request");
+//		assertTrue(elementos.size() == 0);
+//	}
+//
+//	Hacer una búsqueda con un texto específico y comprobar que se muestra la página que
+//	corresponde, con la lista de usuarios en los que el texto especificados sea parte de su nombre, apellidos o
+//	de su email.
 	@Test
-	public void PR13() {
+	public void PR14() {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		PO_ListUsers.fillSearchText(driver, "pedo");
-		elementos = PO_View.checkElement(driver, "text", "Request");
-		assertTrue(elementos.size() == 0);
+		PO_ListUsers.fillSearchText(driver, "ba2");
+		PO_View.checkElement(driver, "text", "prueba2@prueba2.com");
 	}
-//
-//	// PR14. Sin hacer /
-//	@Test
-//	public void PR14() {
-//		assertTrue("PR14 sin hacer", false);
-//	}
 //
 //	// PR15. Sin hacer /
 //	@Test
