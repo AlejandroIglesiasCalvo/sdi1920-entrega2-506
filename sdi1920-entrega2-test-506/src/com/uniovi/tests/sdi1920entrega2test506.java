@@ -136,27 +136,39 @@ public class sdi1920entrega2test506 {
 //	}
 //
 //	// Comprobar que el botón cerrar sesión no está visible si el usuario no está autenticado.
-	@Test
-	public void PR10() {
-		driver.navigate().to("http://localhost:8081");
-		try {
-			List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogout')]");
-		} catch (NoSuchElementException nse) {
-			assertTrue("No esta el boton", true);
-		}
-	}
+//	@Test
+//	public void PR10() {
+//		driver.navigate().to("http://localhost:8081");
+//		try {
+//			List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogout')]");
+//		} catch (NoSuchElementException nse) {
+//			assertTrue("No esta el boton", true);
+//		}
+//	}
 //
-//	// PR11. Sin hacer /
+//	// PR11. Mostrar el listado de usuarios y comprobar que se muestran todos los que existen en el sistema. 
 //	@Test
 //	public void PR11() {
-//		assertTrue("PR11 sin hacer", false);
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+//		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
 //	}
 //
-//	// PR12. Sin hacer /
-//	@Test
-//	public void PR12() {
-//		assertTrue("PR12 sin hacer", false);
-//	}
+//	// Hacer una búsqueda con el campo vacío y comprobar que se muestra la página que
+	//corresponde con el listado usuarios existentes en el sistema
+	@Test
+	public void PR12() {
+
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
+		PO_ListUsers.fillSearchText(driver, "");
+		PO_View.checkElement(driver, "text", "prueba2");
+	}
 //
 //	// PR13. Sin hacer /
 //	@Test
