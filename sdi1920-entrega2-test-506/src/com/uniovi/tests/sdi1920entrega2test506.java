@@ -217,8 +217,23 @@ public class sdi1920entrega2test506 {
 //	// Desde el listado de usuarios de la aplicación, enviar una invitación de amistad a un usuario al
 //	que ya le habíamos enviado la invitación previamente. No debería dejarnos enviar la invitación, se podría
 //	ocultar el botón de enviar invitación o notificar que ya había sido enviada previamente.
+//	@Test
+//	public void PR16() {
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
+//		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
+//		By enlace = By.xpath("//td[contains(text(), 'RegVal')]/following-sibling::*[2]");
+//		SeleniumUtils.esperarSegundos(driver, 1);
+//		driver.findElement(enlace).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		SeleniumUtils.textoPresentePagina(driver, "Error al enviar petición, ya existe una petición enviada.");
+//	}
+//
+//	// PR017. Sin hacer /
 	@Test
-	public void PR16() {
+	public void PR17() {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
@@ -229,12 +244,6 @@ public class sdi1920entrega2test506 {
 		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
 		assertTrue(elementos.size() == 1);
 	}
-//
-//	// PR017. Sin hacer /
-//	@Test
-//	public void PR17() {
-//		assertTrue("PR17 sin hacer", false);
-//	}
 //
 //	// PR18. Sin hacer /
 //	@Test
