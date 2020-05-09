@@ -245,32 +245,42 @@ public class sdi1920entrega2test506 {
 //		assertTrue(elementos.size() == 1);
 //	}
 //
-	// PR18. Sin hacer /
+	// Sobre el listado de invitaciones recibidas. Hacer click en el botón/enlace de
+	// una de ellas y
+	// comprobar que dicha solicitud desaparece del listado de invitaciones.
+//	@Test
+//	public void PR18() {
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
+//		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
+//		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/requests')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
+//		assertTrue(elementos.size() == 1);
+//		elementos.get(0).click();
+//		try {
+//			elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
+//		} catch (TimeoutException e) {
+//			// No encuentra el objeto porque ya no esta
+//		}
+//	}
+//
+//	// Mostrar el listado de amigos de un usuario. Comprobar que el listado contiene los amigos que deben ser.
 	@Test
-	public void PR18() {
+	public void PR19() {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/requests')]");
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/friends')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
-		assertTrue(elementos.size() == 1);
-		elementos.get(0).click();
-		try {
-			elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
-		}catch(TimeoutException e) {
-			//No encuentra el objeto porque ya no esta
-		}
+		SeleniumUtils.textoPresentePagina(driver, "prueba1");// Su unico amigo
 	}
-//
-//	// PR19. Sin hacer /
-//	@Test
-//	public void PR19() {
-//		assertTrue("PR19 sin hacer", false);
-//	}
 //
 //	// P20. Sin hacer /
 //	@Test
