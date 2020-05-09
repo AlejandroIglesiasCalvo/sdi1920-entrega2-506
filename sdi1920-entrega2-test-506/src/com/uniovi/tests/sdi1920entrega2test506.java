@@ -302,13 +302,7 @@ public class sdi1920entrega2test506 {
 // //usuario. Se deberá mostrar un mensaje de acción indebida.
 	@Test
 	public void PR22() {
-		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
-		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		driver.navigate().to("http://localhost:8081/user/list");
-//		SeleniumUtils.textoPresentePagina(driver, "Intento de acceso a una zona privada sin autorizacion");
+		assertTrue("Que resulta que este lo teneis mal, gracias por avisar -.-", false);
 	}
 //
 //	// PR23. Sin hacer /
