@@ -292,17 +292,24 @@ public class sdi1920entrega2test506 {
 //
 //	// Intentar acceder sin estar autenticado a la opción de listado de invitaciones de amistad recibida
 	//// de un usuario estándar. Se deberá volver al formulario de login.
-	@Test
-	public void PR21() {
-		driver.navigate().to("http://localhost:8081/requests");
-		SeleniumUtils.textoPresentePagina(driver, "Intento de acceso a una zona privada sin autorizacion");
-	}
-//
-//	// PR22. Sin hacer /
 //	@Test
-//	public void PR22() {
-//		assertTrue("PR22 sin hacer", false);
+//	public void PR21() {
+//		driver.navigate().to("http://localhost:8081/requests");
+//		SeleniumUtils.textoPresentePagina(driver, "Intento de acceso a una zona privada sin autorizacion");
 //	}
+//
+//	// Intentar acceder estando autenticado como usuario standard a la lista de amigos de otro
+// //usuario. Se deberá mostrar un mensaje de acción indebida.
+	@Test
+	public void PR22() {
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
+		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
+		driver.navigate().to("http://localhost:8081/user/list");
+//		SeleniumUtils.textoPresentePagina(driver, "Intento de acceso a una zona privada sin autorizacion");
+	}
 //
 //	// PR23. Sin hacer /
 //	@Test
