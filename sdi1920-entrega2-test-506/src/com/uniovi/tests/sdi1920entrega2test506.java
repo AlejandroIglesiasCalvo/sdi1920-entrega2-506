@@ -232,8 +232,22 @@ public class sdi1920entrega2test506 {
 //	}
 //
 //	// PR017. Sin hacer /
+//	@Test
+//	public void PR17() {
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
+//		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
+//		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/requests')]");
+//		elementos.get(0).click();
+//		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
+//		assertTrue(elementos.size() == 1);
+//	}
+//
+	// PR18. Sin hacer /
 	@Test
-	public void PR17() {
+	public void PR18() {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
@@ -241,15 +255,16 @@ public class sdi1920entrega2test506 {
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
 		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/requests')]");
 		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
 		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
 		assertTrue(elementos.size() == 1);
+		elementos.get(0).click();
+		try {
+			elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
+		}catch(TimeoutException e) {
+			//No encuentra el objeto porque ya no esta
+		}
 	}
-//
-//	// PR18. Sin hacer /
-//	@Test
-//	public void PR18() {
-//		assertTrue("PR18 sin hacer", false);
-//	}
 //
 //	// PR19. Sin hacer /
 //	@Test
