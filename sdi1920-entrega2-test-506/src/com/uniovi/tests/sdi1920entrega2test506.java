@@ -187,22 +187,32 @@ public class sdi1920entrega2test506 {
 //	Hacer una búsqueda con un texto específico y comprobar que se muestra la página que
 //	corresponde, con la lista de usuarios en los que el texto especificados sea parte de su nombre, apellidos o
 //	de su email.
+//	@Test
+//	public void PR14() {
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+//		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
+//		PO_ListUsers.fillSearchText(driver, "ba2");
+//		PO_View.checkElement(driver, "text", "prueba2@prueba2.com");
+//	}
+//
+//	// Desde el listado de usuarios de la aplicación, enviar una invitación de amistad a un usuario.
+//	Comprobar que la solicitud de amistad aparece en el listado de invitaciones (punto siguiente). 
 	@Test
-	public void PR14() {
+	public void PR15() {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		PO_ListUsers.fillSearchText(driver, "ba2");
-		PO_View.checkElement(driver, "text", "prueba2@prueba2.com");
+		By enlace = By.xpath("//td[contains(text(), 'RegVal')]/following-sibling::*[2]");
+		SeleniumUtils.esperarSegundos(driver, 1);
+		driver.findElement(enlace).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		SeleniumUtils.textoPresentePagina(driver, "Petición de amistad enviada correctamente.");
 	}
-//
-//	// PR15. Sin hacer /
-//	@Test
-//	public void PR15() {
-//		assertTrue("PR15 sin hacer", false);
-//	}
 //
 //	// PR16. Sin hacer /
 //	@Test
