@@ -269,24 +269,26 @@ public class sdi1920entrega2test506 {
 //	}
 //
 //	// Mostrar el listado de amigos de un usuario. Comprobar que el listado contiene los amigos que deben ser.
-	@Test
-	public void PR19() {
-		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
-		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/friends')]");
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		SeleniumUtils.textoPresentePagina(driver, "prueba1");// Su unico amigo
-	}
-//
-//	// P20. Sin hacer /
 //	@Test
-//	public void PR20() {
-//		assertTrue("PR20 sin hacer", false);
+//	public void PR19() {
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
+//		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
+//		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/friends')]");
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 2);
+//		SeleniumUtils.textoPresentePagina(driver, "prueba1");// Su unico amigo
 //	}
+//
+//	//Intentar acceder sin estar autenticado a la opción de listado de usuarios. Se deberá volver al
+	////formulario de login
+	@Test
+	public void PR20() {
+		driver.navigate().to("http://localhost:8081/user/list");
+		SeleniumUtils.textoPresentePagina(driver, "Intento de acceso a una zona privada sin autorizacion");
+	}
 //
 //	// PR21. Sin hacer /
 //	@Test
