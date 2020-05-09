@@ -224,11 +224,10 @@ public class sdi1920entrega2test506 {
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_LoginView.fillForm(driver, "prueba2@prueba2.com", "prueba2");
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		By enlace = By.xpath("//td[contains(text(), 'RegVal')]/following-sibling::*[2]");
-		SeleniumUtils.esperarSegundos(driver, 1);
-		driver.findElement(enlace).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		SeleniumUtils.textoPresentePagina(driver, "Error al enviar petición, ya existe una petición enviada.");
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/requests')]");
+		elementos.get(0).click();
+		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
+		assertTrue(elementos.size() == 1);
 	}
 //
 //	// PR017. Sin hacer /
