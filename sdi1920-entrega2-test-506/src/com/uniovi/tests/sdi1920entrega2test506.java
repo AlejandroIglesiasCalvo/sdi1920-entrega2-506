@@ -90,6 +90,7 @@ public class sdi1920entrega2test506 {
 //		SeleniumUtils.textoPresentePagina(driver, "Registrar usuario");
 //	}
 //	//Inicio de sesión con datos válidos (usuario estándar).
+	//REVISAS
 //	@Test
 //	public void PR05() {
 //		driver.navigate().to("http://localhost:8081/cliente.html");
@@ -300,16 +301,19 @@ public class sdi1920entrega2test506 {
 //
 //	// Intentar acceder estando autenticado como usuario standard a la lista de amigos de otro
 // //usuario. Se deberá mostrar un mensaje de acción indebida.
-	@Test
-	public void PR22() {
-		assertTrue("Que resulta que este lo teneis mal, gracias por avisar -.-", false);
-	}
-//
-//	// PR23. Sin hacer /
 //	@Test
-//	public void PR23() {
-//		assertTrue("PR23 sin hacer", false);
+//	public void PR22() {
+//		assertTrue("Que resulta que este lo teneis mal, gracias por avisar -.-", false);
 //	}
+//
+//	//Inicio de sesión con datos válidos.
+	@Test
+	public void PR23() {
+		driver.navigate().to("http://localhost:8081/cliente.html");
+		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+		SeleniumUtils.esperarSegundos(driver, 3);
+		PO_View.checkElement(driver, "text", "Amigos");
+	}
 //
 //	// PR24. Sin hacer /
 //	@Test
