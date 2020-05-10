@@ -373,59 +373,85 @@ public class sdi1920entrega2test506 {
 //
 //	// Acceder a la lista de amigos de un usuario, y realizar un filtrado para encontrar a un amigo
 ////	concreto, el nombre a buscar debe coincidir con el de un amigo
-	@Test
-	public void PR26() {
-		driver.navigate().to("http://localhost:8081/cliente.html");
-		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
-		SeleniumUtils.esperarSegundos(driver, 3);
-		WebElement searchText = driver.findElement(By.name("busqueda"));
-		searchText.click();
-		searchText.clear();
-		searchText.sendKeys("prueba83");
-		SeleniumUtils.esperarSegundos(driver, 3);
-		PO_View.checkElement(driver, "text", "prueba83");
-	}
+//	@Test
+//	public void PR26() {
+//		driver.navigate().to("http://localhost:8081/cliente.html");
+//		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		WebElement searchText = driver.findElement(By.name("busqueda"));
+//		searchText.click();
+//		searchText.clear();
+//		searchText.sendKeys("prueba83");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		PO_View.checkElement(driver, "text", "prueba83");
+//	}
+
 //
 //	Acceder a la lista de mensajes de un amigo “chat”, la lista debe contener al menos tres
-	// mensajes
+// mensajes
+//	@Test
+//	public void PR27() {
+//		driver.navigate().to("http://localhost:8081/cliente.html");
+//		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+//		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//td/a");
+//		assertTrue(elementos.size() == 5);
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 1);
+//		WebElement message = driver.findElement(By.id("message"));
+//		message.click();
+//		message.clear();
+//		message.sendKeys("Hola");
+//		message = driver.findElement(By.id("send"));
+//		message.click();
+//		message = driver.findElement(By.id("message"));
+//		message.click();
+//		message.clear();
+//		message.sendKeys("Que");
+//		message = driver.findElement(By.id("send"));
+//		message.click();
+//		message = driver.findElement(By.id("message"));
+//		message.click();
+//		message.clear();
+//		message.sendKeys("Tal?");
+//		message = driver.findElement(By.id("send"));
+//		message.click();
+//
+//		driver.navigate().to("http://localhost:8081/cliente.html?w=login");
+//		PO_LoginView.fillForm(driver, "prueba1@prueba1.com", "prueba1");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		elementos = PO_View.checkElement(driver, "free", "//tr[contains(@id, 'RegVal')]/td[4]/a");
+//		assertTrue(elementos.size() == 1);
+//		elementos.get(0).click();
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		elementos = PO_View.checkElement(driver, "free", "//div[contains(@class, 'message-container-left')]");
+//		assertTrue(elementos.size() == 3);
+//	}
+
+//
+//	//Acceder a la lista de mensajes de un amigo “chat” y crear un nuevo mensaje, validar que el
+	//// mensaje aparece en la lista de mensajes
 	@Test
-	public void PR27() {
+	public void PR28() {
 		driver.navigate().to("http://localhost:8081/cliente.html");
+		SeleniumUtils.esperarSegundos(driver, 1);
 		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+		SeleniumUtils.esperarSegundos(driver, 1);
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//td/a");
 		assertTrue(elementos.size() == 5);
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 1);
+		elementos.get(3).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
 		WebElement message = driver.findElement(By.id("message"));
 		message.click();
 		message.clear();
 		message.sendKeys("Hola");
 		message = driver.findElement(By.id("send"));
 		message.click();
-		message = driver.findElement(By.id("message"));
-		message.click();
-		message.clear();
-		message.sendKeys("Que");
-		message = driver.findElement(By.id("send"));
-		message.click();
-		message = driver.findElement(By.id("message"));
-		message.click();
-		message.clear();
-		message.sendKeys("Tal?");
-		message = driver.findElement(By.id("send"));
-		message.click();
-
-		driver.navigate().to("http://localhost:8081/cliente.html?w=login");
-		PO_LoginView.fillForm(driver, "prueba1@prueba1.com", "prueba1");
 		SeleniumUtils.esperarSegundos(driver, 3);
-		elementos = PO_View.checkElement(driver, "free", "//tr[contains(@id, 'RegVal')]/td[4]/a");
+		elementos = PO_View.checkElement(driver, "free", "//div[contains(@class, 'message-container-right')]");
 		assertTrue(elementos.size() == 1);
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 3);
-		elementos = PO_View.checkElement(driver, "free", "//div[contains(@class, 'message-container-left')]");
-		assertTrue(elementos.size() == 3);
+		SeleniumUtils.esperarSegundos(driver, 1);
+		PO_View.checkElement(driver, "text", "Hola");
 	}
-//
 //	// PR029. Sin hacer /
 //	@Test
 //	public void PR29() {
