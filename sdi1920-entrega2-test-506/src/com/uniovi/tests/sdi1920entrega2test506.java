@@ -359,7 +359,7 @@ public class sdi1920entrega2test506 {
 //		SeleniumUtils.esperarSegundos(driver, 3);
 //		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
 //	}
-	
+
 //Acceder a la lista de amigos de un usuario, que al menos tenga tres amigos.	
 //	@Test
 //	public void PR25() {
@@ -386,11 +386,45 @@ public class sdi1920entrega2test506 {
 		PO_View.checkElement(driver, "text", "prueba83");
 	}
 //
-//	// PR27. Sin hacer /
-//	@Test
-//	public void PR27() {
-//		assertTrue("PR27 sin hacer", false);
-//	}
+//	Acceder a la lista de mensajes de un amigo “chat”, la lista debe contener al menos tres
+	// mensajes
+	@Test
+	public void PR27() {
+		driver.navigate().to("http://localhost:8081/cliente.html");
+		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//td/a");
+		assertTrue(elementos.size() == 5);
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 1);
+		WebElement message = driver.findElement(By.id("message"));
+		message.click();
+		message.clear();
+		message.sendKeys("Hola");
+		message = driver.findElement(By.id("send"));
+		message.click();
+		message = driver.findElement(By.id("message"));
+		message.click();
+		message.clear();
+		message.sendKeys("Que");
+		message = driver.findElement(By.id("send"));
+		message.click();
+		message = driver.findElement(By.id("message"));
+		message.click();
+		message.clear();
+		message.sendKeys("Tal?");
+		message = driver.findElement(By.id("send"));
+		message.click();
+
+		driver.navigate().to("http://localhost:8081/cliente.html?w=login");
+		PO_LoginView.fillForm(driver, "prueba1@prueba1.com", "prueba1");
+		SeleniumUtils.esperarSegundos(driver, 3);
+		elementos = PO_View.checkElement(driver, "free", "//tr[contains(@id, 'RegVal')]/td[4]/a");
+		assertTrue(elementos.size() == 1);
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 3);
+		elementos = PO_View.checkElement(driver, "free", "//div[contains(@class, 'message-container-left')]");
+		assertTrue(elementos.size() == 3);
+	}
 //
 //	// PR029. Sin hacer /
 //	@Test
