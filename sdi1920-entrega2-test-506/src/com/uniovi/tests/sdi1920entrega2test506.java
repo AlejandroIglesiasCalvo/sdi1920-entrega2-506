@@ -45,11 +45,48 @@ public class sdi1920entrega2test506 {
 	@BeforeClass
 	static public void begin() {
 		PO_View.setTimeout(3);
+
 	}
 
 	@AfterClass
 	static public void end() {
 		driver.quit();
+	}
+
+	@Test
+	public void PR01_Pre1() {
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonSignup')]");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		PO_RegisterView.fillForm(driver, "prueba81", "prueba81@prueba81.com", "prueba81", "prueba81");
+		SeleniumUtils.textoPresentePagina(driver, "Nuevo usuario registrado");
+	}
+
+	@Test
+	public void PR01_Pre2() {
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonSignup')]");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		PO_RegisterView.fillForm(driver, "prueba82", "prueba82@prueba82.com", "prueba82", "prueba82");
+		SeleniumUtils.textoPresentePagina(driver, "Nuevo usuario registrado");
+	}
+
+	@Test
+	public void PR01_Pre3() {
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonSignup')]");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		PO_RegisterView.fillForm(driver, "prueba83", "prueba83@prueba83.com", "prueba83", "prueba83");
+		SeleniumUtils.textoPresentePagina(driver, "Nuevo usuario registrado");
+	}
+
+	@Test
+	public void PR01_Pre4() {
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonSignup')]");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		PO_RegisterView.fillForm(driver, "prueba84", "prueba84@prueba84.com", "prueba84", "prueba84");
+		SeleniumUtils.textoPresentePagina(driver, "Nuevo usuario registrado");
 	}
 
 //	///Registro de Usuario con datos válidos
@@ -90,7 +127,7 @@ public class sdi1920entrega2test506 {
 //		SeleniumUtils.textoPresentePagina(driver, "Registrar usuario");
 //	}
 //	//Inicio de sesión con datos válidos (usuario estándar).
-	//REVISAS
+	// REVISAS
 //	@Test
 //	public void PR05() {
 //		driver.navigate().to("http://localhost:8081/cliente.html");
@@ -316,19 +353,24 @@ public class sdi1920entrega2test506 {
 //	}
 //
 //	// Inicio de sesión con datos inválidos (usuario no existente en la aplicación)Usuario no encontrado
-	@Test
-	public void PR24() {
-		driver.navigate().to("http://localhost:8081/cliente.html");
-		PO_LoginView.fillForm(driver, "pedo@prueba99.com", "Fake");
-		SeleniumUtils.esperarSegundos(driver, 3);
-		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
-	}
-//
-//	// PR25. Sin hacer /
 //	@Test
-//	public void PR25() {
-//		assertTrue("PR25 sin hacer", false);
+//	public void PR24() {
+//		driver.navigate().to("http://localhost:8081/cliente.html");
+//		PO_LoginView.fillForm(driver, "pedo@prueba99.com", "Fake");
+//		SeleniumUtils.esperarSegundos(driver, 3);
+//		SeleniumUtils.textoPresentePagina(driver, "Usuario no encontrado");
 //	}
+	
+//Acceder a la lista de amigos de un usuario, que al menos tenga tres amigos.	
+	@Test
+	public void PR25() {
+		driver.navigate().to("http://localhost:8081/cliente.html");
+		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
+		SeleniumUtils.esperarSegundos(driver, 3);
+		PO_View.checkElement(driver, "text", "prueba81");
+		PO_View.checkElement(driver, "text", "prueba82");
+		PO_View.checkElement(driver, "text", "prueba82");
+	}
 //
 //	// PR26. Sin hacer /
 //	@Test
