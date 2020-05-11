@@ -12,7 +12,7 @@ public class PO_ListUsers extends PO_NavView {
 		searchText.click();
 		searchText.clear();
 		searchText.sendKeys(searchTextp);
-		// Pulsar el boton de Alta.
+		// Pulsar el boton
 		By boton = By.className("btn");
 		driver.findElement(boton).click();
 	}
