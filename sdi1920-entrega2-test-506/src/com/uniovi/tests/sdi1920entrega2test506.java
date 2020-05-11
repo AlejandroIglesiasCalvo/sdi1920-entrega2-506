@@ -26,7 +26,7 @@ public class sdi1920entrega2test506 {
 	static String URL = "http://localhost:8081";
 
 	// Usuarios para que los test funcionen
-	private int Num = 789;
+	private int Num = 101;
 
 	private String usuario1Nombre = "1" + "prueba" + Num;
 	private String usuario1Email = "1" + "prueba" + Num + "@prueba" + Num + ".com";
@@ -47,6 +47,10 @@ public class sdi1920entrega2test506 {
 	private String usuario5Nombre = "5" + "prueba" + Num;
 	private String usuario5Email = "5" + "prueba" + Num + "@prueba" + Num + ".com";
 	private String usuario5Contraseña = "5" + "prueba" + Num;
+
+	private String usuario99 = "prueba99";
+	private String email99 = "prueba99@prueba99.com";
+	private String contraseña99 = "prueba99";
 
 	public static WebDriver getDriver(String PathFirefox, String Geckdriver) {
 		System.setProperty("webdriver.firefox.bin", PathFirefox);
@@ -112,51 +116,7 @@ public class sdi1920entrega2test506 {
 		SeleniumUtils.textoPresentePagina(driver, "Nuevo usuario registrado");
 	}
 
-	@Test
-	public void PR00_Pre5() {
-		// De 3 a 1
-		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, usuario3Email, usuario3Contraseña);
-		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		By enlace = By.xpath("//td[contains(text(), '1prueba')]/following-sibling::*[2]");
-		SeleniumUtils.esperarSegundos(driver, 1);
-		driver.findElement(enlace).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		SeleniumUtils.textoPresentePagina(driver, "Petición de amistad enviada correctamente.");
-	}
-	@Test
-	public void PR00_Pre6() {
-		// De 2 a 1
-		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, usuario2Email, usuario2Contraseña);
-		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		By enlace = By.xpath("//td[contains(text(), '1prueba')]/following-sibling::*[2]");
-		SeleniumUtils.esperarSegundos(driver, 1);
-		driver.findElement(enlace).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		SeleniumUtils.textoPresentePagina(driver, "Petición de amistad enviada correctamente.");
-	}
-	@Test
-	public void PR00_Pre7() {
-		// Aceptar
-		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, usuario1Email, usuario1Contraseña);
-		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/requests')]");
-		elementos.get(0).click();
-		SeleniumUtils.esperarSegundos(driver, 2);
-		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
-		assertTrue(elementos.size() == 2);
-		elementos.get(0).click();
-		elementos.get(1).click();
-	}
-
+	
 	/// Registro de Usuario con datos válidos
 	@Test
 	public void PR01() {
@@ -255,11 +215,7 @@ public class sdi1920entrega2test506 {
 	@Test
 	public void PR10() {
 		driver.navigate().to("http://localhost:8081");
-		try {
-			List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogout')]");
-		} catch (NoSuchElementException nse) {
-			assertTrue("No esta el boton", true);
-		}
+		SeleniumUtils.textoNoPresentePagina(driver,"Desconectar");
 	}
 
 	// PR11. Mostrar el listado de usuarios y comprobar que se muestran todos los
@@ -296,11 +252,10 @@ public class sdi1920entrega2test506 {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, usuario5Email, usuario5Contraseña);
+		PO_LoginView.fillForm(driver, email99, contraseña99);
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
 		PO_ListUsers.fillSearchText(driver, "pedo");
-		elementos = PO_View.checkElement(driver, "text", "Request");
-		assertTrue(elementos.size() == 0);
+		SeleniumUtils.textoNoPresentePagina(driver,"Request");
 	}
 
 	// Hacer una búsqueda con un texto específico y comprobar que se muestra la
@@ -314,8 +269,8 @@ public class sdi1920entrega2test506 {
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_LoginView.fillForm(driver, usuario5Email, usuario5Contraseña);
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		PO_ListUsers.fillSearchText(driver, "2prue");
-		PO_View.checkElement(driver, "text", "prueba2@prueba2.com");
+		PO_ListUsers.fillSearchText(driver, "RegVal");
+		PO_View.checkElement(driver, "text", "prueba99@prueba99.com");
 	}
 
 	// Desde el listado de usuarios de la aplicación, enviar una invitación de
@@ -329,7 +284,7 @@ public class sdi1920entrega2test506 {
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_LoginView.fillForm(driver, usuario5Email, usuario5Contraseña);
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		By enlace = By.xpath("//td[contains(text(), '1prueba')]/following-sibling::*[2]");
+		By enlace = By.xpath("//td[contains(text(), 'RegVal')]/following-sibling::*[2]");
 		SeleniumUtils.esperarSegundos(driver, 1);
 		driver.findElement(enlace).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
@@ -348,7 +303,7 @@ public class sdi1920entrega2test506 {
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_LoginView.fillForm(driver, usuario5Email, usuario5Contraseña);
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
-		By enlace = By.xpath("//td[contains(text(), '1prueba')]/following-sibling::*[2]");
+		By enlace = By.xpath("//td[contains(text(), 'RegVal')]/following-sibling::*[2]");
 		SeleniumUtils.esperarSegundos(driver, 1);
 		driver.findElement(enlace).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
@@ -363,12 +318,12 @@ public class sdi1920entrega2test506 {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, usuario1Email, usuario1Contraseña);
+		PO_LoginView.fillForm(driver, email99, contraseña99);
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
 		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/requests')]");
 		elementos.get(0).click();
 		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
-		assertTrue(elementos.size() == 2);
+		assertTrue(elementos.size() >= 1);
 	}
 
 	// Sobre el listado de invitaciones recibidas. Hacer click en el botón/enlace de
@@ -379,7 +334,7 @@ public class sdi1920entrega2test506 {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, usuario1Email, usuario1Contraseña);
+		PO_LoginView.fillForm(driver, email99, contraseña99);
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
 		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/requests')]");
 		elementos.get(0).click();
@@ -387,11 +342,7 @@ public class sdi1920entrega2test506 {
 		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
 		assertTrue(elementos.size() == 1);
 		elementos.get(0).click();
-		try {
-			elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
-		} catch (TimeoutException e) {
-			// No encuentra el objeto porque ya no esta
-		}
+		SeleniumUtils.textoNoPresentePagina(driver,"y");
 	}
 
 	// Mostrar el listado de amigos de un usuario. Comprobar que el listado contiene
@@ -401,7 +352,7 @@ public class sdi1920entrega2test506 {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li/a[contains(@id, 'botonLogin')]");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		PO_LoginView.fillForm(driver, usuario1Email, usuario1Contraseña);
+		PO_LoginView.fillForm(driver, email99, contraseña99);
 		SeleniumUtils.textoPresentePagina(driver, "Usuarios");
 		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href,'/friends')]");
 		elementos.get(0).click();
@@ -458,11 +409,11 @@ public class sdi1920entrega2test506 {
 	@Test
 	public void PR25() {
 		driver.navigate().to("http://localhost:8081/cliente.html");
-		PO_LoginView.fillForm(driver, usuario1Email, usuario1Contraseña);
+		PO_LoginView.fillForm(driver, email99, contraseña99);
 		SeleniumUtils.esperarSegundos(driver, 3);
-		PO_View.checkElement(driver, "text", "2prueba");
-		PO_View.checkElement(driver, "text", "3prueba");
-		PO_View.checkElement(driver, "text", "5rueba");
+		PO_View.checkElement(driver, "text", "prueba1");
+		PO_View.checkElement(driver, "text", "prueba2");
+		PO_View.checkElement(driver, "text", "prueba81");
 	}
 
 	// Acceder a la lista de amigos de un usuario, y realizar un filtrado para
@@ -471,14 +422,14 @@ public class sdi1920entrega2test506 {
 	@Test
 	public void PR26() {
 		driver.navigate().to("http://localhost:8081/cliente.html");
-		PO_LoginView.fillForm(driver, usuario1Email, usuario1Contraseña);
+		PO_LoginView.fillForm(driver, email99, contraseña99);
 		SeleniumUtils.esperarSegundos(driver, 3);
 		WebElement searchText = driver.findElement(By.name("busqueda"));
 		searchText.click();
 		searchText.clear();
-		searchText.sendKeys("5prueba");
+		searchText.sendKeys("prueba81");
 		SeleniumUtils.esperarSegundos(driver, 3);
-		PO_View.checkElement(driver, "text", "5prueba");
+		PO_View.checkElement(driver, "text", "prueba81");
 	}
 
 	// Acceder a la lista de mensajes de un amigo“chat”, la lista debe contener al
@@ -486,9 +437,9 @@ public class sdi1920entrega2test506 {
 	@Test
 	public void PR27() {
 		driver.navigate().to("http://localhost:8081/cliente.html");
-		PO_LoginView.fillForm(driver, usuario1Email, usuario1Contraseña);
+		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//td/a");
-		assertTrue(elementos.size() == 3);
+		assertTrue(elementos.size() == 5);
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 1);
 		WebElement message = driver.findElement(By.id("message"));
@@ -510,14 +461,14 @@ public class sdi1920entrega2test506 {
 		message = driver.findElement(By.id("send"));
 		message.click();
 		driver.navigate().to("http://localhost:8081/cliente.html?w=login");
-		PO_LoginView.fillForm(driver, usuario2Email, usuario2Contraseña);
+		PO_LoginView.fillForm(driver, "prueba1@prueba1.com", "prueba1");
 		SeleniumUtils.esperarSegundos(driver, 3);
-		elementos = PO_View.checkElement(driver, "free", "//tr[contains(@id, '5prueba')]/td[4]/a");
+		elementos = PO_View.checkElement(driver, "free", "//tr[contains(@id, 'RegVal')]/td[4]/a");
 		assertTrue(elementos.size() == 1);
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 3);
 		elementos = PO_View.checkElement(driver, "free", "//div[contains(@class, 'message-container-left')]");
-		assertTrue(elementos.size() == 3);
+		assertTrue(elementos.size() >= 3);
 	}
 
 	// Acceder a la lista de mensajes de un amigo “chat” y crear un nuevo mensaje,
@@ -527,10 +478,10 @@ public class sdi1920entrega2test506 {
 	public void PR28() {
 		driver.navigate().to("http://localhost:8081/cliente.html");
 		SeleniumUtils.esperarSegundos(driver, 1);
-		PO_LoginView.fillForm(driver, usuario1Email, usuario1Contraseña);
+		PO_LoginView.fillForm(driver, "prueba99@prueba99.com", "prueba99");
 		SeleniumUtils.esperarSegundos(driver, 1);
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//td/a");
-		assertTrue(elementos.size() == 3);
+		assertTrue(elementos.size() == 5);
 		elementos.get(3).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
 		WebElement message = driver.findElement(By.id("message"));
@@ -541,7 +492,7 @@ public class sdi1920entrega2test506 {
 		message.click();
 		SeleniumUtils.esperarSegundos(driver, 3);
 		elementos = PO_View.checkElement(driver, "free", "//div[contains(@class, 'message-container-right')]");
-		assertTrue(elementos.size() == 1);
+		assertTrue(elementos.size() >= 1);
 		SeleniumUtils.esperarSegundos(driver, 1);
 		PO_View.checkElement(driver, "text", "Hola");
 	}
