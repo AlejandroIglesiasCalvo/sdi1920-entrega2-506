@@ -26,7 +26,7 @@ public class sdi1920entrega2test506 {
 	static String URL = "http://localhost:8081";
 
 	// Usuarios para que los test funcionen
-	private int Num = 101;
+	private int Num = 112;
 
 	private String usuario1Nombre = "1" + "prueba" + Num;
 	private String usuario1Email = "1" + "prueba" + Num + "@prueba" + Num + ".com";
@@ -340,7 +340,7 @@ public class sdi1920entrega2test506 {
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
 		elementos = PO_View.checkElement(driver, "free", "//td/following-sibling::*[1]");
-		assertTrue(elementos.size() == 1);
+		assertTrue(elementos.size() >= 1);
 		elementos.get(0).click();
 		SeleniumUtils.textoNoPresentePagina(driver,"y");
 	}
@@ -383,7 +383,8 @@ public class sdi1920entrega2test506 {
 	// usuario. Se deberá mostrar un mensaje de acción indebida.
 	@Test
 	public void PR22() {
-		assertTrue("Que resulta que este lo teneis mal, gracias por avisar -.-", false);
+		assertTrue("Que resulta que este lo teneis mal, gracias por avisar -.-,"
+				+ "Estando en sesion esta prueba no tiene sentido, porque vuelves a entrar en yu lista de amigos", false);
 	}
 
 	// Inicio de sesión con datos válidos.
